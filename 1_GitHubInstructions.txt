@@ -1,0 +1,151 @@
+TEST: I may want to delete local repo and do the following on work laptop so I can screenshare with Grant.
+
+1)  ReClone from remote repo to local (Instructiosn below)
+
+2)  In remote repo Make a change in a file and add new file.
+
+3) Pull the differences to local.
+	3A) Get into local cloned directory:
+		$ cd /c/users/linkm/Dropbox/1_LINK_SCRIPTS_GITHUB/LinkSQL
+                 (main)
+        3B) git fetch
+		-->Am I supposed to understand this output?
+
+           	remote: Enumerating objects: 6, done.
+		remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 6
+		Unpacking objects: 100% (6/6), 5.04 KiB | 468.00 KiB/s, done.
+		From https://github.com/linkmassing/LinkSQL
+	        30beedb..686f4a8  main       -> origin/main
+
+		DEFINITION:
+		git fetch really only downloads new data from a remote repository - but it doesn't 
+		integrate any of this new data into your working files. Fetch is great for getting 
+		a fresh view on all the things that happened in a remote repository. Due to it's "harmless" 
+		nature, you can rest assured: fetch will never manipulate, destroy, or screw up anything. 
+		This means you can never fetch often enough.
+
+
+	3C) git status
+		-->This is easier to read  Example:
+			On branch main
+			Your branch is behind 'origin/main' by 2 commits, and can be fast-forwarded.
+  			(use "git pull" to update your local branch)
+
+			nothing to commit, working tree clean
+
+		DEFINITION:
+		The git status command displays the state of the working directory and the staging area. 
+		It lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git.
+
+
+	3D) git pull
+		Updating 30beedb..686f4a8
+		Fast-forward
+ 		1_20240108_THISISANEWFILE.txt | 0
+ 		1_GitHubInstructions.txt      | 2 ++
+ 		2 files changed, 2 insertions(+)
+ 		create mode 100644 1_20240108_THISISANEWFILE.txt
+
+	3E) for Grins, If I add another file (and modify another) to remote repo can I just simply git pull? YES!!!
+		remote: Enumerating objects: 5, done.
+		remote: Counting objects: 100% (5/5), done.
+		remote: Compressing objects: 100% (5/5), done.
+		remote: Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+		Unpacking objects: 100% (5/5), 5.06 KiB | 740.00 KiB/s, done.
+		From https://github.com/linkmassing/LinkSQL
+	        686f4a8..288da31  main       -> origin/main
+		Updating 686f4a8..288da31
+		Fast-forward
+ 		1_20240108_THISISANEWFILE2.txt | 0
+ 		1_GitHubInstructions.txt       | 3 +++
+ 		2 files changed, 3 insertions(+)
+ 		create mode 100644 1_20240108_THISISANEWFILE2.txt
+
+
+
+QUESTIONS SO FAR:
+	-It appears you have to do git fetch then git status. If not, git status does not show you mande any changes to repo.
+		-git fetch:  new remote-tracking branches and tags without merging those changes into your own branches.
+
+
+4) Make a change to a file in local and add new file. Then push up to repo
+	4A) 	git status
+		On branch main
+		Your branch is up to date with 'origin/main'.
+
+		Changes not staged for commit:
+	        (use "git add <file>..." to update what will be committed)
+  		(use "git restore <file>..." to discard changes in working directory)
+        	modified:   1_GitHubInstructions.txt
+
+		Untracked files:
+  		(use "git add <file>..." to include in what will be committed)
+	        1_20240108_THISISANEWFILE3.txt
+
+		no changes added to commit (use "git add" and/or "git commit -a")
+
+	4B) git add *
+
+
+	4C) git commit -am "My goodness, will this work?"
+
+	[main 69502f9] My goodness, will this work?
+	2 files changed, 16 insertions(+)
+ 	create mode 100644 1_20240108_THISISANEWFILE3.txt
+ 	create mode 100644 1_20240108_THISISANEWFILE4.txt
+
+
+	4D) git push
+
+	Enumerating objects: 4, done.
+	Counting objects: 100% (4/4), done.
+	Delta compression using up to 20 threads
+	Compressing objects: 100% (3/3), done.
+	Writing objects: 100% (3/3), 438 bytes | 438.00 KiB/s, done.
+	Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+	remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+	To https://github.com/linkmassing/LinkSQL.git
+        c53b22f..69502f9  main -> main
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+******************* TO CLONE FROM github to Local: *************************************
+1) Get into your local working directory:
+$  cd /c/users/linkm/Dropbox/1_LINK_SCRIPTS_GITHUB
+OR,..
+$  cd /C/Users/lmass01/GitHubREPO
+
+
+2) C$ git clone https://github.com/linkmassing/LinkSQL.git
+Cloning into 'LinkSQL'...
+remote: Enumerating objects: 51, done.
+remote: Counting objects: 100% (51/51), done.
+remote: Compressing objects: 100% (50/50), done.
+remote: Total 51 (delta 3), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (51/51), 190.23 KiB | 1.71 MiB/s, done.
+Resolving deltas: 100% (3/3), done.
+
+
+Cloning will create a directory within my directory that is named the same as my repository:
+
+Get into that directory:
+$ cd /c/users/linkm/Dropbox/1_LINK_SCRIPTS_GITHUB/LinkSQL
+(main)
+cd
+
+Or,
+
+cd /C/Users/lmass01/GitHubREPO/LinkSQL
+
